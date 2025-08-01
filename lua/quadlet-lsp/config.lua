@@ -3,7 +3,7 @@ local util = require("quadlet-lsp.util")
 
 function M.setup(opts)
 	-- Set default LSP path if not provided
-	opts.cmd = opts.cmd or { "quadlet-lsp " } -- Default to looking in PATH
+	opts.cmd = opts.cmd or { "quadlet-lsp" } -- Default to looking in PATH
 
 	-- Register filetypes first
 	vim.filetype.add({
