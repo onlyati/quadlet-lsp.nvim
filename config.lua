@@ -3,7 +3,7 @@ local util = require("quadlet-lsp.util")
 
 function M.setup(opts)
     -- Set default LSP path if not provided
-    opts.cmd = opts.cmd or { "quadlet-lsp" } -- Default to looking in PATH
+    opts.cmd = opts.cmd or { "quadlet-lsp.nvim " } -- Default to looking in PATH
 
     -- Register filetypes first
     vim.filetype.add({
@@ -47,7 +47,7 @@ function M.setup(opts)
             handlers = {
                 ["window/showMessage"] = function(_, result, ctx)
                     local client = vim.lsp.get_client_by_id(ctx.client_id)
-                    local client_name = client and client.name or "quadlet-lsp"
+                    local client_name = client and client.name or "quadlet-lsp.nvim "
                     local level = ({
                         [vim.lsp.protocol.MessageType.Error] = vim.log.levels.ERROR,
                         [vim.lsp.protocol.MessageType.Warning] = vim.log.levels.WARN,
