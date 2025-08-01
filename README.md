@@ -1,6 +1,6 @@
-## Quadlet LSP Neovim plugin
+# Quadlet LSP Neovim plugin
 
-This is a plugin for [Podman Quadlet LSP](íhttps://github.com/onlyati/quadlet-lsp/).
+This is a plugin for [Podman Quadlet LSP](https://github.com/onlyati/quadlet-lsp/).
 
 Setup for the plugin with `lazy.nvim`:
 
