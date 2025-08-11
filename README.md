@@ -1,8 +1,9 @@
 # Quadlet LSP Neovim plugin
 
-This is a plugin for [Podman Quadlet LSP](https://github.com/onlyati/quadlet-lsp/).
+This is a plugin for
+[Podman Quadlet LSP](https://github.com/onlyati/quadlet-lsp/).
 
-Setup for the plugin with `lazy.nvim`:
+Work with `>=0.10` Neovim. Setup for the plugin with `lazy.nvim`:
 
 ```lua
 return {
@@ -17,3 +18,10 @@ return {
     end,
 }
 ```
+
+## Commands
+
+- `QuadletPullAll`: Looking for all image in the current directory and if image
+  is not present, execute `podman image pull <image>` command.
+- `QuadletUserReload`: Execute a `systemctl --user daemon-reload` command.
+- `QuadletRootReload`: Execute a `systemctl daemon-reload` command.
