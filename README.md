@@ -23,5 +23,4 @@ return {
 
 - `QuadletPullAll`: Looking for all image in the current directory and if image
   is not present, execute `podman image pull <image>` command.
-- `QuadletUserReload`: Execute a `systemctl --user daemon-reload` command.
-- `QuadletRootReload`: Execute a `systemctl daemon-reload` command.
+- `QuadletListJobs`: List running background jobs.
