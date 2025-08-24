@@ -3,10 +3,11 @@
 This is a plugin for
 [Podman Quadlet LSP](https://github.com/onlyati/quadlet-lsp/).
 
-Work with `>=0.10` Neovim. Setup for the plugin with `lazy.nvim`:
+Work with `>=0.10` Neovim with tree-sitter. Setup for the plugin with
+`lazy.nvim`:
 
 ```lua
-return {
+{
     "onlyati/quadlet-lsp.nvim",
     lazy = false,
     config = function()

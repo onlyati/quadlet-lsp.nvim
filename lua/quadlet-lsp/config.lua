@@ -5,27 +5,15 @@ function M.setup(opts)
 	-- Set default LSP path if not provided
 	opts.cmd = opts.cmd or { "quadlet-lsp" } -- Default to looking in PATH
 
-	-- Register filetypes first
-	vim.filetype.add({
-		extension = {
-			container = "quadlet",
-			volume = "quadlet",
-			network = "quadlet",
-			pod = "quadlet",
-			image = "quadlet",
-			build = "quadlet",
-			kube = "quadlet",
-		},
+	require("nvim-treesitter.configs").setup({
+		ensure_installed = { "ini" },
+		highlight = { enable = true },
+		auto_install = true,
+		sync_install = false,
+		ignore_install = {},
+		modules = {},
 	})
-
-	-- Setup autocommands
-	vim.api.nvim_create_autocmd({ "BufReadPost", "VimEnter" }, {
-		pattern = { "*.container", "*.volume", "*.network", "*.pod", "*.image", "*.build", "*.kube" },
-		callback = function()
-			vim.bo.filetype = "quadlet"
-			vim.bo.syntax = "systemd"
-		end,
-	})
+	vim.treesitter.language.register("ini", "quadlet")
 
 	-- Verify LSP binary exists
 	if not util.has_lsp_binary(opts.cmd[1]) then
