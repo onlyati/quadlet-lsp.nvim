@@ -5,16 +5,6 @@ function M.setup(opts)
 	-- Set default LSP path if not provided
 	opts.cmd = opts.cmd or { "quadlet-lsp" } -- Default to looking in PATH
 
-	require("nvim-treesitter.configs").setup({
-		ensure_installed = { "ini" },
-		highlight = { enable = true },
-		auto_install = true,
-		sync_install = false,
-		ignore_install = {},
-		modules = {},
-	})
-	vim.treesitter.language.register("ini", "quadlet")
-
 	-- Verify LSP binary exists
 	if not util.has_lsp_binary(opts.cmd[1]) then
 		vim.notify(
