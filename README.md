@@ -7,8 +7,7 @@ This is a plugin for
 >
 > Open your issues/questions in the `onlyati/quadlet-lsp` repository.
 
-Work with `>=0.10` Neovim with tree-sitter. Setup for the plugin with
-`lazy.nvim`:
+Work with `>=0.11` Neovim. Setup for the plugin with `lazy.nvim`:
 
 ```lua
 {

@@ -29,32 +29,32 @@ function M.setup(opts)
 	end, {})
 
 	-- Register LSP config
-	require("lspconfig.configs").quadlet_lsp = {
-		default_config = {
-			cmd = opts.cmd,
-			filetypes = { "quadlet" },
-			root_dir = function(_)
-				return vim.fn.getcwd()
+	vim.lsp.config("quadlet-lsp", {
+		cmd = opts.cmd,
+		filetypes = { "quadlet" },
+
+		root_dir = function(_, on_dir)
+			on_dir(vim.fn.getcwd())
+		end,
+
+		handlers = {
+			["window/showMessage"] = function(_, result, ctx)
+				local client = vim.lsp.get_client_by_id(ctx.client_id)
+				local client_name = (client and client.name) or "quadlet-lsp.nvim"
+				local level = ({
+					[vim.lsp.protocol.MessageType.Error] = vim.log.levels.ERROR,
+					[vim.lsp.protocol.MessageType.Warning] = vim.log.levels.WARN,
+					[vim.lsp.protocol.MessageType.Info] = vim.log.levels.INFO,
+					[vim.lsp.protocol.MessageType.Log] = vim.log.levels.DEBUG,
+				})[result.type] or vim.log.levels.INFO
+
+				vim.notify(string.format("[%s] %s", client_name, result.message), level)
 			end,
-			handlers = {
-				["window/showMessage"] = function(_, result, ctx)
-					local client = vim.lsp.get_client_by_id(ctx.client_id)
-					local client_name = client and client.name or "quadlet-lsp.nvim "
-					local level = ({
-						[vim.lsp.protocol.MessageType.Error] = vim.log.levels.ERROR,
-						[vim.lsp.protocol.MessageType.Warning] = vim.log.levels.WARN,
-						[vim.lsp.protocol.MessageType.Info] = vim.log.levels.INFO,
-						[vim.lsp.protocol.MessageType.Log] = vim.log.levels.DEBUG,
-					})[result.type] or vim.log.levels.INFO
-
-					vim.notify(string.format("[%s] %s", client_name, result.message), level)
-				end,
-			},
 		},
-	}
+	})
 
-	-- Start LSP client
-	require("lspconfig").quadlet_lsp.setup({})
+	-- Auto-start based on filetype/root
+	vim.lsp.enable("quadlet-lsp")
 end
 
 return M
