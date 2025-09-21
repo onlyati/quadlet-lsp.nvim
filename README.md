@@ -13,13 +13,18 @@ Work with `>=0.11` Neovim. Setup for the plugin with `lazy.nvim`:
 {
     "onlyati/quadlet-lsp.nvim",
     lazy = false,
-    config = function()
-        require("quadlet-lsp").setup({
-            -- If `quadlet-lsp` is not on path by default
-            -- you can specify its path (optional)
-            cmd = { "/home/ati/work/quadlet-lsp/bin/quadlet-lsp" },
-        })
-    end,
+}
+```
+
+If `quadlet-lsp` binary cannot be found on path, pass `cmd` parameter:
+
+```lua
+{
+    "onlyati/quadlet-lsp.nvim",
+    lazy = false,
+    opts = {
+        cmd = "/home/ati/work/quadlet-lsp/bin/quadlet-lsp",
+    }
 }
 ```
 
