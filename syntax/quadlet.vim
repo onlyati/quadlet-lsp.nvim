@@ -30,7 +30,7 @@ syn region quadletValue start=/=\s*/ms=s+1,hs=s+1
       \ skip=/\\\s*$/
       \ contains=quadletCont
 
-hi def link quadletHeader   Modemsg
+hi def link quadletHeader   ModeMsg
 hi def link quadletComment  Comment
 hi def link quadletLabel    Identifier
 hi def link quadletValue    String
