@@ -8,5 +8,6 @@ vim.filetype.add({
 		image = "quadlet",
 		build = "quadlet",
 		kube = "quadlet",
+		artifact = "quadlet",
 	},
 })

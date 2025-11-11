@@ -6,6 +6,7 @@ local exts = {
 	image = true,
 	build = true,
 	kube = true,
+	artifact = true,
 }
 
 local ext = vim.fn.expand("%:e")
